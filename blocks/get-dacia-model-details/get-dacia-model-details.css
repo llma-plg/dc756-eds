@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap');
+
+/* Required for correct iframe sizing — AEM section margins inflate shadow body */
+main > div,
+main > .section,
+main > .section:first-of-type {
+  margin: 0;
+}
+main > .section > div {
+  max-width: none;
+  padding: 0;
+}
+body {
+  overflow: auto;
+}
+
+main .get-dacia-model-details {
+  font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 8px;
+  max-width: 640px;
+}
+
+main .get-dacia-model-details h1,
+main .get-dacia-model-details h2,
+main .get-dacia-model-details h3,
+main .get-dacia-model-details [class*="name"] {
+  font-family: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+main .get-dacia-model-details .gdmd-card {
+  display: flex;
+  flex-direction: row;
+  min-height: 340px;
+  border-radius: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+main .get-dacia-model-details .gdmd-media {
+  flex: 0 0 260px;
+  min-width: 0;
+}
+
+main .get-dacia-model-details .gdmd-content {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+main .get-dacia-model-details .gdmd-name {
+  margin: 0 !important;
+  font-size: 22px !important;
+  line-height: 1.1 !important;
+  font-weight: 700;
+}
+
+main .get-dacia-model-details .gdmd-price {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+main .get-dacia-model-details .gdmd-price-context {
+  font-size: 11px;
+  opacity: 0.72;
+  line-height: 1.4;
+  margin: 0 !important;
+}
+
+main .get-dacia-model-details .gdmd-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+main .get-dacia-model-details .gdmd-chip {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 0;
+  background: #646b52;
+  color: #fff;
+  white-space: nowrap;
+}
+
+main .get-dacia-model-details .gdmd-spec {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+  opacity: 0.85;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 0;
+}
+
+main .get-dacia-model-details .gdmd-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-y: auto;
+}
+
+main .get-dacia-model-details .gdmd-section > summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+main .get-dacia-model-details .gdmd-section > summary::after {
+  content: '+';
+  font-size: 15px;
+  opacity: 0.8;
+}
+
+main .get-dacia-model-details .gdmd-section[open] > summary::after {
+  content: '\2212';
+}
+
+main .get-dacia-model-details .gdmd-section > summary::-webkit-details-marker {
+  display: none;
+}
+
+main .get-dacia-model-details .gdmd-section ul {
+  margin: 0 0 6px;
+  padding-left: 16px;
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: 0.88;
+}
+
+main .get-dacia-model-details .gdmd-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+main .get-dacia-model-details .gdmd-cta {
+  flex: 1 1 0;
+  border: none;
+  border-radius: 0;
+  background: #111111;
+  color: #fff;
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 12px 10px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+main .get-dacia-model-details .gdmd-cta:hover,
+main .get-dacia-model-details .gdmd-cta:focus-visible {
+  background: #000000;
+  outline: 2px solid #646b52;
+  outline-offset: 2px;
+}
+
+main .get-dacia-model-details .gdmd-empty {
+  padding: 24px;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+@media (max-width: 520px) {
+  main .get-dacia-model-details .gdmd-card {
+    flex-direction: column;
+  }
+  main .get-dacia-model-details .gdmd-media {
+    flex: 0 0 160px;
+  }
+}
+
+/* Dark mode — dim outer widget background only; card content keeps brand palette color */
+@media (prefers-color-scheme: dark) {
+  main .get-dacia-model-details { background: #111; }
+}
+body.dark main .get-dacia-model-details { background: #111; }
