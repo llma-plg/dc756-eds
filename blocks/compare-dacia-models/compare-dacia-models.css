@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap');
+
+/* Required for correct iframe sizing — AEM section margins inflate shadow body */
+main > div,
+main > .section,
+main > .section:first-of-type {
+  margin: 0;
+}
+main > .section > div {
+  max-width: none;
+  padding: 0;
+}
+body {
+  overflow: auto;
+}
+
+main .compare-dacia-models {
+  font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 8px;
+  color: #111;
+}
+
+main .compare-dacia-models h1,
+main .compare-dacia-models h2,
+main .compare-dacia-models h3,
+main .compare-dacia-models [class*="name"] {
+  font-family: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+main .compare-dacia-models .cdm-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+main .compare-dacia-models .cdm-panels {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: stretch;
+}
+
+main .compare-dacia-models .cdm-panel {
+  flex: 1 1 260px;
+  min-width: 0;
+  border-radius: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+main .compare-dacia-models .cdm-image {
+  width: 100%;
+  height: 140px;
+  flex: 0 0 140px;
+}
+
+main .compare-dacia-models .cdm-image img,
+main .compare-dacia-models .cdm-image-fallback {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+main .compare-dacia-models .cdm-content {
+  padding: 16px;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+main .compare-dacia-models .cdm-name {
+  margin: 0 !important;
+  font-size: 18px !important;
+  font-weight: 700;
+  line-height: 1.2 !important;
+}
+
+main .compare-dacia-models .cdm-chip {
+  align-self: flex-start;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+}
+
+main .compare-dacia-models .cdm-price {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+main .compare-dacia-models .cdm-price-context {
+  font-size: 11px;
+  opacity: 0.7;
+  margin-top: -4px;
+}
+
+main .compare-dacia-models .cdm-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+main .compare-dacia-models .cdm-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+main .compare-dacia-models .cdm-row-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+}
+
+main .compare-dacia-models .cdm-row-value {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+main .compare-dacia-models .cdm-row-value.cdm-diff {
+  opacity: 1;
+  font-weight: 700;
+  color: #e3e9d8;
+}
+
+main .compare-dacia-models .cdm-price.cdm-diff {
+  color: #e3e9d8;
+}
+
+main .compare-dacia-models .cdm-ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+main .compare-dacia-models .cdm-btn {
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 12px;
+  cursor: pointer;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+main .compare-dacia-models .cdm-btn-primary {
+  background: #111111;
+  color: #ffffff;
+}
+
+main .compare-dacia-models .cdm-btn-secondary {
+  background: transparent;
+  color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+main .compare-dacia-models .cdm-btn-primary:hover,
+main .compare-dacia-models .cdm-btn-primary:focus-visible {
+  opacity: 0.88;
+}
+
+main .compare-dacia-models .cdm-btn-secondary:hover,
+main .compare-dacia-models .cdm-btn-secondary:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+main .compare-dacia-models .cdm-shared {
+  background: #646b52;
+  color: #ffffff;
+}
+
+main .compare-dacia-models .cdm-shared:hover,
+main .compare-dacia-models .cdm-shared:focus-visible {
+  opacity: 0.88;
+}
+
+main .compare-dacia-models .cdm-btn:focus-visible {
+  outline: 2px solid #646b52;
+  outline-offset: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  main .compare-dacia-models { background: #111; color: #eee; }
+}
+body.dark main .compare-dacia-models { background: #111; color: #eee; }
