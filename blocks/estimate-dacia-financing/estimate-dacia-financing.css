@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap');
+
+/* Required for correct iframe sizing — AEM section margins inflate shadow body */
+main > div,
+main > .section,
+main > .section:first-of-type {
+  margin: 0;
+}
+main > .section > div {
+  max-width: none;
+  padding: 0;
+}
+body {
+  overflow: auto;
+}
+
+main .estimate-dacia-financing {
+  font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 8px;
+  max-width: 780px;
+  box-sizing: border-box;
+  color: #111111;
+}
+
+main .estimate-dacia-financing h1,
+main .estimate-dacia-financing h2,
+main .estimate-dacia-financing h3,
+main .estimate-dacia-financing [class*="title"] {
+  font-family: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+main .estimate-dacia-financing .edf-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* Section 1 — headline summary */
+main .estimate-dacia-financing .edf-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #dddddd;
+}
+
+main .estimate-dacia-financing .edf-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+main .estimate-dacia-financing .edf-stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #646b52;
+}
+
+main .estimate-dacia-financing .edf-stat-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111111;
+}
+
+main .estimate-dacia-financing .edf-stat--hero .edf-stat-value {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Section 2 — scenario cards */
+main .estimate-dacia-financing .edf-scenarios {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+main .estimate-dacia-financing .edf-scenario {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+main .estimate-dacia-financing .edf-scenario-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+main .estimate-dacia-financing .edf-scenario-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #111111;
+}
+
+main .estimate-dacia-financing .edf-chip {
+  flex: 0 0 auto;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: #646b52;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+main .estimate-dacia-financing .edf-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+main .estimate-dacia-financing .edf-row-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #3860be;
+}
+
+main .estimate-dacia-financing .edf-row-value {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #111111;
+}
+
+main .estimate-dacia-financing .edf-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+main .estimate-dacia-financing .edf-tag {
+  font-size: 11px;
+  line-height: 1.4;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(100, 107, 82, 0.12);
+  color: #4a5040;
+}
+
+main .estimate-dacia-financing .edf-tradeoffs {
+  margin: 0;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+main .estimate-dacia-financing .edf-tradeoffs li {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #111111;
+}
+
+/* Footer — disclaimer + CTAs */
+main .estimate-dacia-financing .edf-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+main .estimate-dacia-financing .edf-disclaimer {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #646b52;
+}
+
+main .estimate-dacia-financing .edf-actions {
+  display: flex;
+  gap: 8px;
+}
+
+main .estimate-dacia-financing .edf-btn {
+  flex: 1 1 0;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+main .estimate-dacia-financing .edf-btn--primary {
+  border: none;
+  background: #111111;
+  color: #ffffff;
+}
+
+main .estimate-dacia-financing .edf-btn--primary:hover,
+main .estimate-dacia-financing .edf-btn--primary:focus-visible {
+  background: #111111;
+  opacity: 0.88;
+}
+
+main .estimate-dacia-financing .edf-btn--secondary {
+  border: 1px solid #111111;
+  background: #ffffff;
+  color: #111111;
+}
+
+main .estimate-dacia-financing .edf-btn--secondary:hover,
+main .estimate-dacia-financing .edf-btn--secondary:focus-visible {
+  background: rgba(17, 17, 17, 0.06);
+}
+
+main .estimate-dacia-financing .edf-empty {
+  margin: 0;
+  padding: 24px 16px;
+  text-align: center;
+  font-size: 13px;
+  color: #646b52;
+}
+
+@media (max-width: 576px) {
+  main .estimate-dacia-financing .edf-scenarios {
+    flex-direction: column;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  main .estimate-dacia-financing {
+    background: #111;
+    color: #f2f2f2;
+  }
+  main .estimate-dacia-financing .edf-card {
+    background: #1a1a1a;
+    border-color: #333;
+  }
+  main .estimate-dacia-financing .edf-summary {
+    border-bottom-color: #333;
+  }
+  main .estimate-dacia-financing .edf-stat-value,
+  main .estimate-dacia-financing .edf-scenario-title,
+  main .estimate-dacia-financing .edf-row-value,
+  main .estimate-dacia-financing .edf-tradeoffs li {
+    color: #f2f2f2;
+  }
+  main .estimate-dacia-financing .edf-stat-label {
+    color: #a3ac8c;
+  }
+  main .estimate-dacia-financing .edf-row-label {
+    color: #8aa0e0;
+  }
+  main .estimate-dacia-financing .edf-scenario {
+    border-color: #333;
+  }
+  main .estimate-dacia-financing .edf-tag {
+    background: rgba(163, 172, 140, 0.18);
+    color: #cdd4ba;
+  }
+  main .estimate-dacia-financing .edf-disclaimer {
+    color: #a3ac8c;
+  }
+  main .estimate-dacia-financing .edf-btn--primary {
+    background: #f2f2f2;
+    color: #111111;
+  }
+  main .estimate-dacia-financing .edf-btn--secondary {
+    border-color: #f2f2f2;
+    background: transparent;
+    color: #f2f2f2;
+  }
+  main .estimate-dacia-financing .edf-btn--secondary:hover,
+  main .estimate-dacia-financing .edf-btn--secondary:focus-visible {
+    background: rgba(242, 242, 242, 0.1);
+  }
+}
+
+body.dark main .estimate-dacia-financing {
+  background: #111;
+  color: #f2f2f2;
+}
+body.dark main .estimate-dacia-financing .edf-card {
+  background: #1a1a1a;
+  border-color: #333;
+}
+body.dark main .estimate-dacia-financing .edf-summary {
+  border-bottom-color: #333;
+}
+body.dark main .estimate-dacia-financing .edf-stat-value,
+body.dark main .estimate-dacia-financing .edf-scenario-title,
+body.dark main .estimate-dacia-financing .edf-row-value,
+body.dark main .estimate-dacia-financing .edf-tradeoffs li {
+  color: #f2f2f2;
+}
+body.dark main .estimate-dacia-financing .edf-stat-label {
+  color: #a3ac8c;
+}
+body.dark main .estimate-dacia-financing .edf-row-label {
+  color: #8aa0e0;
+}
+body.dark main .estimate-dacia-financing .edf-scenario {
+  border-color: #333;
+}
+body.dark main .estimate-dacia-financing .edf-tag {
+  background: rgba(163, 172, 140, 0.18);
+  color: #cdd4ba;
+}
+body.dark main .estimate-dacia-financing .edf-disclaimer {
+  color: #a3ac8c;
+}
+body.dark main .estimate-dacia-financing .edf-btn--primary {
+  background: #f2f2f2;
+  color: #111111;
+}
+body.dark main .estimate-dacia-financing .edf-btn--secondary {
+  border-color: #f2f2f2;
+  background: transparent;
+  color: #f2f2f2;
+}
+body.dark main .estimate-dacia-financing .edf-btn--secondary:hover,
+body.dark main .estimate-dacia-financing .edf-btn--secondary:focus-visible {
+  background: rgba(242, 242, 242, 0.1);
+}
