@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap');
+
+/* Required for correct iframe sizing — AEM section margins inflate shadow body */
+main > div,
+main > .section,
+main > .section:first-of-type {
+  margin: 0;
+}
+
+main > .section > div {
+  max-width: none;
+  padding: 0;
+}
+
+body {
+  overflow: auto;
+}
+
+main .find-dacia-offers {
+  font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 8px;
+  max-width: 780px;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+main .find-dacia-offers h1,
+main .find-dacia-offers h2,
+main .find-dacia-offers h3,
+main .find-dacia-offers [class*="name"],
+main .find-dacia-offers [class*="title"] {
+  font-family: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+main .find-dacia-offers-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+main .find-dacia-offers-track-wrap {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+main .find-dacia-offers-track {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+
+main .find-dacia-offers-track::-webkit-scrollbar {
+  display: none;
+}
+
+main .find-dacia-offers-card {
+  flex: 0 0 220px;
+  height: 360px;
+  border-radius: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+main .find-dacia-offers-img {
+  position: relative;
+  flex: 0 0 140px;
+  overflow: hidden;
+  background: #e0e0e0;
+}
+
+main .find-dacia-offers-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+main .find-dacia-offers-chips {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-width: calc(100% - 12px);
+}
+
+main .find-dacia-offers-chip {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 3px 6px;
+  border-radius: 0;
+  background: #e34850;
+  color: #fff;
+  letter-spacing: 0.2px;
+}
+
+main .find-dacia-offers-info {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px 12px;
+  gap: 4px;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+main .find-dacia-offers-name {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+main .find-dacia-offers-model {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.85;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+main .find-dacia-offers-desc {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: 0.78;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+main .find-dacia-offers-price-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+main .find-dacia-offers-price {
+  font-size: 14px;
+  font-weight: 700;
+  color: inherit;
+}
+
+main .find-dacia-offers-valid {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+main .find-dacia-offers-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+main .find-dacia-offers-cta {
+  width: 100%;
+  padding: 8px 0;
+  background: #111111;
+  color: #ffffff;
+  border: none;
+  border-radius: 0;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.15s ease;
+}
+
+main .find-dacia-offers-cta:hover,
+main .find-dacia-offers-cta:focus-visible {
+  background: #000000;
+  outline: none;
+}
+
+main .find-dacia-offers-cta:focus-visible {
+  outline: 2px solid #646b52;
+  outline-offset: 2px;
+}
+
+main .find-dacia-offers-cta-secondary {
+  background: transparent;
+  color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+main .find-dacia-offers-cta-secondary:hover,
+main .find-dacia-offers-cta-secondary:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+main .find-dacia-offers-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+main .find-dacia-offers-arrow:focus-visible {
+  outline: 2px solid #646b52;
+  outline-offset: 2px;
+}
+
+main .find-dacia-offers-arrow-left {
+  left: 4px;
+}
+
+main .find-dacia-offers-arrow-right {
+  right: 4px;
+}
+
+main .find-dacia-offers-fade {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 100%;
+  pointer-events: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  main .find-dacia-offers { background: #111; }
+  main .find-dacia-offers-img { background: #1e1e1e; }
+  main .find-dacia-offers-card { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); }
+}
+
+body.dark main .find-dacia-offers { background: #111; }
+body.dark main .find-dacia-offers-img { background: #1e1e1e; }
+body.dark main .find-dacia-offers-card { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); }
