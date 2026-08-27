@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap');
+
+/* Required for correct iframe sizing — AEM section margins inflate shadow body */
+main > div,
+main > .section,
+main > .section:first-of-type {
+  margin: 0;
+}
+main > .section > div {
+  max-width: none;
+  padding: 0;
+}
+body {
+  overflow: auto;
+}
+
+main .compare-dacia-financing-options {
+  font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 12px;
+  max-width: 780px;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+main .compare-dacia-financing-options h1,
+main .compare-dacia-financing-options h2,
+main .compare-dacia-financing-options h3,
+main .compare-dacia-financing-options [class*="title"] {
+  font-family: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+main .compare-dacia-financing-options-row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 12px;
+}
+
+main .compare-dacia-financing-options-panel {
+  flex: 1 1 260px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+  border-radius: 0;
+  overflow: hidden;
+  max-height: 400px;
+}
+
+main .compare-dacia-financing-options-panel-image {
+  flex: 0 0 140px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main .compare-dacia-financing-options-panel-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+main .compare-dacia-financing-options-panel-image-fill {
+  width: 100%;
+  height: 100%;
+}
+
+main .compare-dacia-financing-options-panel-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 8px;
+}
+
+main .compare-dacia-financing-options-panel-hero-amount {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+main .compare-dacia-financing-options-panel-hero-caption {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+
+main .compare-dacia-financing-options-panel-content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 6px;
+  background: #3d4034;
+  color: #fff;
+  overflow: hidden;
+}
+
+main .compare-dacia-financing-options-panel-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+main .compare-dacia-financing-options-panel-badge {
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 0;
+  padding: 3px 8px;
+  width: fit-content;
+  display: inline-block;
+}
+
+main .compare-dacia-financing-options-panel-description {
+  font-size: 13px;
+  line-height: 1.45;
+  opacity: 0.85;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+  margin: 0;
+}
+
+main .compare-dacia-financing-options-panel-term {
+  font-size: 12px;
+  opacity: 0.75;
+  margin: 0;
+}
+
+main .compare-dacia-financing-options-panel-cta {
+  margin-top: auto;
+  padding: 10px;
+  width: 100%;
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: 0;
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease-out, color 0.3s ease-out;
+}
+
+main .compare-dacia-financing-options-panel-cta:hover,
+main .compare-dacia-financing-options-panel-cta:focus-visible {
+  background: #646b52;
+  color: #ffffff;
+  outline: none;
+}
+
+@media (max-width: 480px) {
+  main .compare-dacia-financing-options-panel { max-height: none; }
+  main .compare-dacia-financing-options-panel-content { overflow: visible; }
+  main .compare-dacia-financing-options-panel-description {
+    -webkit-line-clamp: unset;
+    display: block;
+    overflow: visible;
+    flex: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  main .compare-dacia-financing-options { background: transparent; }
+  main .compare-dacia-financing-options-panel { border-color: #666; }
+}
+body.dark main .compare-dacia-financing-options { background: transparent; }
+body.dark main .compare-dacia-financing-options-panel { border-color: #666; }
