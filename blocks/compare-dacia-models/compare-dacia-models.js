@@ -1,57 +1,43 @@
 // codegen:layout-pattern=comparison
-// Sample data for standalone/preview mode. In production, data comes from bridge.toolResult.
+// Sample data for standalone/preview mode.
+// In production, data comes dynamically from bridge.toolResult.
 const SAMPLE_DATA = [
   {
+    model_id: 'bigster',
     name: 'Dacia Bigster',
-    category: 'SUV (C-segment)',
-    body_style: 'SUV',
-    starting_price: 116900,
-    currency: 'RON',
+    body_style: 'SUV (C-segment)',
+    category: 'SUV',
+    starting_price: 20490,
+    currency: 'EUR',
+    powertrains: ['full hybrid 155', 'hybrid-G 150 4x4 (petrol/LPG)', 'mild hybrid 140', 'eco-g 120 (LPG)'],
     seats: 5,
-    boot_capacity_liters: 667,
-    powertrains: ['full hybrid 155', 'mild hybrid 140', 'mild hybrid 130 4x4', 'GPL/LPG'],
-    versions: ['Expression', 'Extreme', 'Journey'],
-    features: [
-      'Dual-zone climate control',
-      '10.1" media display',
-      'Wireless smartphone replication',
-      'Arkamys 3D sound',
-      'YouClip accessory system',
-      'Hill descent control',
-      'Level 2 driving assistance',
-    ],
-    detail_url: 'https://www.dacia.ro/gama-dacia/bigster.html',
-    configure_url: 'https://www.dacia.ro/configuratorul-nostru.html',
-    is_deal: false,
+    available_versions: ['essential', 'expression', 'journey', 'extreme'],
+    key_equipment: ['Largest Dacia SUV', 'Available as full hybrid', 'Up to 4x4 hybrid-G powertrain'],
+    scenario_tradeoffs: ['Largest boot and cabin — best for family road trips', 'Higher starting price than Duster'],
+    detail_url: 'https://www.dacia.ro/gama-de-modele-hibride-si-electrice/bigster-suv.html',
+    image_url: 'https://cdn.group.renault.com/dac/ro/gpl/Bigster%20GPL.jpg.ximg.xsmall.jpg/e6921f98ca.jpg',
   },
   {
+    model_id: 'duster',
     name: 'Dacia Duster',
-    category: 'SUV (B-segment)',
-    body_style: 'SUV',
-    starting_price: 98900,
-    currency: 'RON',
+    body_style: 'SUV (B-segment)',
+    category: 'SUV',
+    starting_price: 17100,
+    currency: 'EUR',
+    powertrains: ['hybrid-G 150 4x4 (petrol/LPG)', 'hybrid 155', 'mild hybrid 140', 'eco-g 120 (LPG)', 'hybrid 150 4x4', 'eco-g 120 auto'],
     seats: 5,
-    boot_capacity_liters: 517,
-    powertrains: ['full hybrid 140', 'mild hybrid 130', 'mild hybrid 130 4x4', 'GPL/LPG'],
-    versions: ['Essential', 'Expression', 'Extreme', 'Journey'],
-    features: [
-      'YouClip modular system',
-      '10.1" touchscreen',
-      'Multiview camera',
-      'Hill descent control',
-      'Emergency braking assist',
-      'Sleep Pack (Extreme)',
-    ],
-    detail_url: 'https://www.dacia.ro/gama-dacia/duster.html',
-    configure_url: 'https://www.dacia.ro/configuratorul-nostru.html',
-    is_deal: false,
+    available_versions: ['essential', 'expression', 'journey', 'extreme'],
+    key_equipment: ['Ground clearance up to 217 mm', '4x4 with terrain mode selector', '10-inch touchscreen'],
+    scenario_tradeoffs: ['More affordable and easier to park', 'Smaller cabin than the Bigster'],
+    detail_url: 'https://www.dacia.ro/gama-de-modele-hibride-si-electrice/duster-suv.html',
+    image_url: 'https://cdn.group.renault.com/dac/master/dacia-vn/vehicules/duster-p1310/overview/editorial/dacia-duster-p1310-overview-004-1-mobile.jpg.ximg.xsmall.jpg/ba4175c768.jpg',
   },
 ];
 
-// Brand colors from DESIGN_TOKENS. getThemedCardBg darkens PALETTE[0] to luminance <= 0.12 for WCAG AA.
-const PALETTE = ['#646b52', '#3860be', '#111111', '#ffffff', '#dddddd'];
-const CARD_COLORS = ['#646b52', '#3860be', '#0fb5ae', '#e68619', '#d83790', '#2dca72'];
+// Brand palette read from DESIGN_TOKENS.color (olive-khaki accent).
+const PALETTE = ['#646b52', '#3860be', '#000000', '#ffffff'];
 const ACCENT = '#646b52';
+const ACCENT_LIGHT = '#b9c19f'; // lightened olive for highlight text on the dark card strip
 
 function getThemedCardBg(palette) {
   if (!palette || !palette[0]) return null;
@@ -64,34 +50,36 @@ function getThemedCardBg(palette) {
   const relLum = (rr, gg, bb) => 0.2126 * lum(rr) + 0.7152 * lum(gg) + 0.0722 * lum(bb);
   if (relLum(r, g, b) <= 0.12) return { bg: `#${hex}`, fg: '#ffffff' };
   let lo = 0; let hi = 1;
-  for (let i = 0; i < 20; i++) {
-    const m = (lo + hi) / 2;
-    if (relLum(Math.round(r * m), Math.round(g * m), Math.round(b * m)) > 0.12) hi = m; else lo = m;
-  }
+  for (let i = 0; i < 20; i++) { const m = (lo + hi) / 2; if (relLum(Math.round(r * m), Math.round(g * m), Math.round(b * m)) > 0.12) hi = m; else lo = m; }
   const dr = Math.round(r * lo); const dg = Math.round(g * lo); const db = Math.round(b * lo);
   return { bg: `#${dr.toString(16).padStart(2, '0')}${dg.toString(16).padStart(2, '0')}${db.toString(16).padStart(2, '0')}`, fg: '#ffffff' };
 }
 const theme = getThemedCardBg(PALETTE);
 
-const get = {
-  seats: (it) => it.passenger_capacity ?? it.seats,
-  luggage: (it) => it.luggage_capacity_litres ?? it.boot_capacity_liters,
-  powertrains: (it) => it.powertrain_types ?? it.powertrains ?? [],
-  drivetrain: (it) => it.drivetrain_options ?? [],
-  versions: (it) => it.versions ?? [],
-  features: (it) => it.key_features ?? it.features ?? [],
-};
-
-function fmtPrice(it) {
-  if (it.starting_price == null) return '—';
-  const n = Number(it.starting_price).toLocaleString('ro-RO');
-  return `${n} ${it.currency || ''}`.trim();
+function formatPrice(item) {
+  if (item.starting_price == null) return '';
+  const symbols = { EUR: '€', USD: '$', GBP: '£', RON: 'lei ' };
+  const sym = symbols[item.currency] || (item.currency ? `${item.currency} ` : '');
+  const num = Number(item.starting_price).toLocaleString('en-US');
+  return `from ${sym}${num}`;
 }
 
-function differ(a, b) {
-  const norm = (v) => (Array.isArray(v) ? v.join('|') : String(v ?? ''));
-  return norm(a) !== norm(b);
+function specValue(item, key) {
+  const v = item[key];
+  if (v == null) return '';
+  if (Array.isArray(v)) return v.join(', ');
+  if (key === 'luggage_capacity_liters') return `${v} L`;
+  return String(v);
 }
+
+const SPEC_ROWS = [
+  { key: 'seats', label: 'Seats' },
+  { key: 'luggage_capacity_liters', label: 'Boot capacity' },
+  { key: 'dimensions', label: 'Dimensions' },
+  { key: 'powertrains', label: 'Powertrains' },
+  { key: 'available_versions', label: 'Versions' },
+  { key: 'key_equipment', label: 'Key equipment' },
+];
 
 export default async function decorate(block, bridge) {
   let items;
@@ -104,15 +92,16 @@ export default async function decorate(block, bridge) {
     } else {
       const _result = await bridge.toolResult;
       const structuredContent = _result?.structuredContent || {};
-      // structuredContent.models — bare array outputSchema; key derived from actionName "compare_dacia_models"
+      // structuredContent.models — derived from action name "compare_dacia_models" (bare array outputSchema rule)
       items = structuredContent?.models || [];
     }
   } else {
     items = SAMPLE_DATA;
   }
+  if (!items || !items.length) items = SAMPLE_DATA;
 
   block.textContent = '';
-  renderComparison(block, (items || []).slice(0, 2), bridge);
+  renderComparison(block, items, bridge);
 
   if (bridge) {
     bridge.reportSize(block.offsetWidth, block.offsetHeight);
@@ -125,152 +114,126 @@ export default async function decorate(block, bridge) {
   }
 }
 
-function specRow(label, value, isDiff) {
-  const row = document.createElement('div');
-  row.className = 'cdm-row';
-  const l = document.createElement('span');
-  l.className = 'cdm-row-label';
-  l.textContent = label;
-  const v = document.createElement('span');
-  v.className = `cdm-row-value${isDiff ? ' cdm-diff' : ''}`;
-  v.textContent = value;
-  row.append(l, v);
-  return row;
-}
-
 function renderComparison(block, items, bridge) {
-  const wrap = document.createElement('div');
-  wrap.className = 'cdm-wrap';
+  const itemA = items[0] || {};
+  const itemB = items[1] || items[0] || {};
+  const pair = [itemA, itemB];
 
-  const panels = document.createElement('div');
-  panels.className = 'cdm-panels';
+  const row = document.createElement('div');
+  row.className = 'compare-dacia-models-row';
 
-  const other = (i) => items[i === 0 ? 1 : 0] || {};
-
-  items.forEach((item, i) => {
-    const oth = other(i);
-    const panel = document.createElement('div');
-    panel.className = 'cdm-panel';
-
-    // Image (pinned top) — color fallback when no image_url
-    const imgBox = document.createElement('div');
-    imgBox.className = 'cdm-image';
-    if (item.image_url) {
-      const img = document.createElement('img');
-      img.src = item.image_url;
-      img.alt = item.name || '';
-      img.onerror = () => {
-        const d = document.createElement('div');
-        d.className = 'cdm-image-fallback';
-        d.style.backgroundColor = CARD_COLORS[i % CARD_COLORS.length];
-        img.parentNode.replaceChild(d, img);
-      };
-      imgBox.appendChild(img);
-    } else {
-      const d = document.createElement('div');
-      d.className = 'cdm-image-fallback';
-      d.style.backgroundColor = CARD_COLORS[i % CARD_COLORS.length];
-      imgBox.appendChild(d);
-    }
-    panel.appendChild(imgBox);
-
-    const content = document.createElement('div');
-    content.className = 'cdm-content';
-    content.style.background = theme?.bg ?? '#1a1a1a';
-    content.style.color = theme?.fg ?? '#fff';
-
-    // Name + price pinned top
-    const name = document.createElement('h3');
-    name.className = 'cdm-name';
-    name.textContent = item.name || '—';
-    content.appendChild(name);
-
-    if (item.body_style || item.category) {
-      const chip = document.createElement('span');
-      chip.className = 'cdm-chip';
-      chip.textContent = item.body_style || item.category;
-      content.appendChild(chip);
-    }
-
-    const price = document.createElement('div');
-    price.className = 'cdm-price';
-    if (differ(item.starting_price, oth.starting_price)) price.classList.add('cdm-diff');
-    price.textContent = fmtPrice(item);
-    content.appendChild(price);
-
-    if (item.price_context) {
-      const pc = document.createElement('div');
-      pc.className = 'cdm-price-context';
-      pc.textContent = item.price_context;
-      content.appendChild(pc);
-    }
-
-    const rows = document.createElement('div');
-    rows.className = 'cdm-rows';
-
-    rows.appendChild(specRow('Locuri', String(get.seats(item) ?? '—'), differ(get.seats(item), get.seats(oth))));
-    rows.appendChild(specRow('Portbagaj', get.luggage(item) != null ? `${get.luggage(item)} l` : '—', differ(get.luggage(item), get.luggage(oth))));
-
-    const pt = get.powertrains(item);
-    if (pt.length) rows.appendChild(specRow('Motorizări', pt.join(', '), differ(pt, get.powertrains(oth))));
-
-    const dt = get.drivetrain(item);
-    if (dt.length) rows.appendChild(specRow('Tracțiune', dt.join(', '), differ(dt, get.drivetrain(oth))));
-
-    const vs = get.versions(item);
-    if (vs.length) rows.appendChild(specRow('Versiuni', vs.join(', '), differ(vs, get.versions(oth))));
-
-    const ft = get.features(item);
-    if (ft.length) rows.appendChild(specRow('Dotări', ft.slice(0, 4).join(', '), false));
-
-    if (item.use_case_fit) rows.appendChild(specRow('Potrivire', item.use_case_fit, true));
-
-    content.appendChild(rows);
-
-    // CTAs
-    const ctas = document.createElement('div');
-    ctas.className = 'cdm-ctas';
-
-    const configBtn = document.createElement('button');
-    configBtn.className = 'cdm-btn cdm-btn-primary';
-    configBtn.type = 'button';
-    configBtn.textContent = 'Configurează';
-    if (bridge) {
-      configBtn.addEventListener('click', () => {
-        if (item.configure_url) bridge.openLink(item.configure_url);
-        else bridge.sendMessage(`Vreau să configurez ${item.name}`);
-      });
-    }
-    ctas.appendChild(configBtn);
-
-    const testBtn = document.createElement('button');
-    testBtn.className = 'cdm-btn cdm-btn-secondary';
-    testBtn.type = 'button';
-    testBtn.textContent = 'Programează test drive';
-    if (bridge) {
-      testBtn.addEventListener('click', () => {
-        if (item.detail_url) bridge.openLink(item.detail_url);
-        else bridge.sendMessage(`Vreau să programez un test drive pentru ${item.name}`);
-      });
-    }
-    ctas.appendChild(testBtn);
-
-    content.appendChild(ctas);
-    panel.appendChild(content);
-    panels.appendChild(panel);
+  pair.forEach((item, i) => {
+    const other = pair[(i + 1) % 2];
+    row.appendChild(buildPanel(item, other, bridge));
   });
 
-  wrap.appendChild(panels);
+  block.appendChild(row);
+}
 
-  // Shared CTA
-  const shared = document.createElement('button');
-  shared.className = 'cdm-btn cdm-shared';
-  shared.type = 'button';
-  shared.textContent = 'Vezi ofertele';
-  if (bridge) {
-    shared.addEventListener('click', () => bridge.sendMessage('Arată-mi ofertele Dacia'));
+function buildPanel(item, other, bridge) {
+  const panel = document.createElement('div');
+  panel.className = 'compare-dacia-models-panel';
+
+  // Image
+  const imgPanel = document.createElement('div');
+  imgPanel.className = 'compare-dacia-models-panel-image';
+  if (item.image_url) {
+    const img = document.createElement('img');
+    img.src = item.image_url;
+    img.alt = item.name || '';
+    img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
+    img.onerror = () => {
+      const d = document.createElement('div');
+      d.className = 'compare-dacia-models-panel-image-placeholder';
+      if (img.parentNode) img.parentNode.replaceChild(d, img);
+    };
+    imgPanel.appendChild(img);
+  } else {
+    const d = document.createElement('div');
+    d.className = 'compare-dacia-models-panel-image-placeholder';
+    imgPanel.appendChild(d);
   }
-  wrap.appendChild(shared);
+  panel.appendChild(imgPanel);
 
-  block.appendChild(wrap);
+  // Content
+  const content = document.createElement('div');
+  content.className = 'compare-dacia-models-panel-content';
+  content.style.background = theme ? theme.bg : '#2a2d22';
+  content.style.color = theme ? theme.fg : '#fff';
+
+  const title = document.createElement('h3');
+  title.className = 'compare-dacia-models-panel-title';
+  title.textContent = item.name || '';
+  content.appendChild(title);
+
+  if (item.category || item.body_style) {
+    const badge = document.createElement('span');
+    badge.className = 'compare-dacia-models-panel-badge';
+    badge.textContent = item.body_style || item.category;
+    content.appendChild(badge);
+  }
+
+  const priceText = formatPrice(item);
+  if (priceText) {
+    const price = document.createElement('div');
+    price.className = 'compare-dacia-models-panel-price';
+    price.textContent = priceText;
+    content.appendChild(price);
+  }
+
+  // Aligned spec rows — highlight values that differ from the other model.
+  const specs = document.createElement('dl');
+  specs.className = 'compare-dacia-models-specs';
+  SPEC_ROWS.forEach((spec) => {
+    const va = specValue(item, spec.key);
+    const vb = specValue(other, spec.key);
+    if (!va && !vb) return;
+
+    const rowEl = document.createElement('div');
+    rowEl.className = 'compare-dacia-models-spec';
+
+    const dt = document.createElement('dt');
+    dt.textContent = spec.label;
+    rowEl.appendChild(dt);
+
+    const dd = document.createElement('dd');
+    dd.textContent = va || '—';
+    if (va && va !== vb) dd.classList.add('is-diff');
+    rowEl.appendChild(dd);
+
+    specs.appendChild(rowEl);
+  });
+  content.appendChild(specs);
+
+  // Best suited for
+  const tradeoffs = Array.isArray(item.scenario_tradeoffs) ? item.scenario_tradeoffs : [];
+  if (tradeoffs.length) {
+    const best = document.createElement('div');
+    best.className = 'compare-dacia-models-best';
+    const bh = document.createElement('span');
+    bh.className = 'compare-dacia-models-best-label';
+    bh.textContent = 'Best suited for';
+    best.appendChild(bh);
+    const bp = document.createElement('p');
+    bp.className = 'compare-dacia-models-best-text';
+    bp.textContent = tradeoffs[0];
+    best.appendChild(bp);
+    content.appendChild(best);
+  }
+
+  // CTA — olive-filled primary, opens the model detail page.
+  const cta = document.createElement('button');
+  cta.className = 'compare-dacia-models-panel-cta';
+  cta.type = 'button';
+  cta.textContent = 'Configure This Model';
+  if (bridge) {
+    cta.addEventListener('click', () => {
+      if (item.detail_url) bridge.openLink(item.detail_url);
+      else bridge.sendMessage(`Tell me more about the ${item.name || 'model'}`);
+    });
+  }
+  content.appendChild(cta);
+
+  panel.appendChild(content);
+  return panel;
 }
