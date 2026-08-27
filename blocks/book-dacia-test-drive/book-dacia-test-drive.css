@@ -21,90 +21,63 @@ main .book-dacia-test-drive {
   justify-content: center;
 }
 
-main .book-dacia-test-drive .bdtd-title,
-main .book-dacia-test-drive .bdtd-dealer-name {
+main .book-dacia-test-drive h1,
+main .book-dacia-test-drive h2,
+main .book-dacia-test-drive h3,
+main .book-dacia-test-drive [class*="title"] {
   font-family: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 main .book-dacia-test-drive .bdtd-card {
   width: 100%;
   max-width: 400px;
-  background: #ffffff;
-  border: 1px solid #dddddd;
+  background: var(--background-color, #fff);
+  border: 1px solid #000;
   border-radius: 0;
   overflow: hidden;
   box-sizing: border-box;
 }
 
-/* Header block — palette-derived dark bg carries the brand color */
+/* Header — palette-derived olive background */
 main .book-dacia-test-drive .bdtd-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px;
-}
-
-main .book-dacia-test-drive .bdtd-media {
-  flex: 0 0 88px;
-  height: 60px;
-  overflow: hidden;
-}
-
-main .book-dacia-test-drive .bdtd-media-img,
-main .book-dacia-test-drive .bdtd-media-fill {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   display: block;
 }
 
+main .book-dacia-test-drive .bdtd-hero {
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+}
+
 main .book-dacia-test-drive .bdtd-header-meta {
-  min-width: 0;
+  padding: 12px;
 }
 
 main .book-dacia-test-drive .bdtd-title {
-  font-size: 18px;
+  margin: 0 0 4px !important;
+  font-size: 20px;
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
 }
 
-main .book-dacia-test-drive .bdtd-sub {
-  font-size: 11px;
-  opacity: 0.8;
-  margin-top: 2px;
+main .book-dacia-test-drive .bdtd-desc {
+  margin: 0 !important;
+  font-size: 12px;
+  line-height: 1.45;
+  opacity: 0.85;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-main .book-dacia-test-drive .bdtd-body {
+/* Form */
+main .book-dacia-test-drive .bdtd-form {
   padding: 12px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-
-main .book-dacia-test-drive .bdtd-dealer {
-  border-left: 3px solid #646b52;
-  padding-left: 8px;
-}
-
-main .book-dacia-test-drive .bdtd-dealer-name {
-  font-size: 14px;
-  font-weight: 600;
-  color: #111111;
-}
-
-main .book-dacia-test-drive .bdtd-dealer-addr {
-  font-size: 12px;
-  color: #555555;
-}
-
-main .book-dacia-test-drive .bdtd-grid {
-  display: flex;
-  gap: 10px;
-}
-
-main .book-dacia-test-drive .bdtd-grid .bdtd-field {
-  flex: 1;
-  min-width: 0;
 }
 
 main .book-dacia-test-drive .bdtd-field {
@@ -117,26 +90,32 @@ main .book-dacia-test-drive .bdtd-label {
   font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #555555;
+  letter-spacing: 0.06em;
+  opacity: 0.55;
 }
 
 main .book-dacia-test-drive .bdtd-input {
   width: 100%;
   box-sizing: border-box;
   padding: 8px 10px;
-  font-size: 13px;
   font-family: inherit;
-  border: 1px solid #dddddd;
+  font-size: 13px;
+  color: var(--text-color, #000);
+  background: #fff;
+  border: 1px solid #000;
   border-radius: 0;
-  background: #ffffff;
-  color: #111111;
+  transition: border-color 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 
 main .book-dacia-test-drive .bdtd-input:focus {
-  outline: 2px solid #646b52;
-  outline-offset: -1px;
+  outline: none;
   border-color: #646b52;
+  box-shadow: 0 0 0 2px rgba(100, 107, 82, 0.35);
+}
+
+main .book-dacia-test-drive input[readonly].bdtd-input {
+  opacity: 0.7;
+  cursor: default;
 }
 
 main .book-dacia-test-drive .bdtd-consent {
@@ -144,43 +123,53 @@ main .book-dacia-test-drive .bdtd-consent {
   align-items: flex-start;
   gap: 8px;
   font-size: 12px;
-  color: #111111;
+  line-height: 1.4;
   cursor: pointer;
 }
 
-main .book-dacia-test-drive .bdtd-check {
-  accent-color: #646b52;
+main .book-dacia-test-drive .bdtd-checkbox {
+  margin: 2px 0 0;
   width: 16px;
   height: 16px;
-  margin: 1px 0 0;
+  accent-color: #646b52;
   flex: 0 0 auto;
 }
 
-main .book-dacia-test-drive .bdtd-consent-error {
+main .book-dacia-test-drive .bdtd-error {
+  margin: 0 !important;
+  font-size: 12px;
   color: #b3261e;
+}
+
+main .book-dacia-test-drive .bdtd-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 2px;
 }
 
 main .book-dacia-test-drive .bdtd-btn {
   width: 100%;
-  box-sizing: border-box;
-  padding: 11px 12px;
+  padding: 10px 12px;
   font-family: inherit;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   border-radius: 0;
   cursor: pointer;
-  transition: background-color 0.15s ease, opacity 0.15s ease;
+  transition: background-color 0.3s ease-out, color 0.3s ease-out;
 }
 
 main .book-dacia-test-drive .bdtd-btn-primary {
-  background: #111111;
-  color: #ffffff;
-  border: none;
+  background: #646b52;
+  color: #fff;
+  border: 1px solid #646b52;
 }
 
 main .book-dacia-test-drive .bdtd-btn-primary:hover,
 main .book-dacia-test-drive .bdtd-btn-primary:focus-visible {
-  background: #000000;
+  background: #4f553f;
+  border-color: #4f553f;
+  outline: none;
 }
 
 main .book-dacia-test-drive .bdtd-btn-primary:disabled {
@@ -189,87 +178,125 @@ main .book-dacia-test-drive .bdtd-btn-primary:disabled {
 }
 
 main .book-dacia-test-drive .bdtd-btn-secondary {
-  background: transparent;
-  color: #111111;
-  border: 1px solid #111111;
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
 }
 
 main .book-dacia-test-drive .bdtd-btn-secondary:hover,
 main .book-dacia-test-drive .bdtd-btn-secondary:focus-visible {
-  background: rgba(17, 17, 17, 0.06);
+  background: #646b52;
+  color: #fff;
+  border-color: #646b52;
+  outline: none;
 }
 
-/* Confirmation view */
-main .book-dacia-test-drive .bdtd-conf-header {
+/* Confirmation */
+main .book-dacia-test-drive .bdtd-confirm-head {
   padding: 14px 12px;
 }
 
 main .book-dacia-test-drive .bdtd-status {
   display: inline-block;
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   padding: 2px 8px;
-  background: #646b52;
-  color: #ffffff;
+  border: 1px solid currentColor;
+  border-radius: 0;
   margin-bottom: 6px;
 }
 
-main .book-dacia-test-drive .bdtd-conf-row {
+main .book-dacia-test-drive .bdtd-confirm-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+main .book-dacia-test-drive .bdtd-row {
   display: flex;
   justify-content: space-between;
   gap: 12px;
   font-size: 13px;
-  padding: 4px 0;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 6px;
 }
 
-main .book-dacia-test-drive .bdtd-conf-key {
-  color: #555555;
-}
-
-main .book-dacia-test-drive .bdtd-conf-val {
-  color: #111111;
+main .book-dacia-test-drive .bdtd-row-key {
   font-weight: 600;
+  opacity: 0.6;
+}
+
+main .book-dacia-test-drive .bdtd-row-val {
   text-align: right;
+  font-weight: 600;
 }
 
-main .book-dacia-test-drive .bdtd-conf-msg {
-  font-size: 12px;
-  line-height: 1.4;
-  color: #555555;
-  margin: 4px 0 2px;
+main .book-dacia-test-drive .bdtd-message {
+  margin: 4px 0 0 !important;
+  font-size: 13px;
+  line-height: 1.45;
 }
 
-/* Dark mode — dim outer bg + adjust the light form surface; keep palette header bg */
+/* Dark mode */
 @media (prefers-color-scheme: dark) {
-  main .book-dacia-test-drive .bdtd-card { background: #161616; border-color: #333333; }
-  main .book-dacia-test-drive .bdtd-dealer-name { color: #f5f5f5; }
-  main .book-dacia-test-drive .bdtd-dealer-addr,
-  main .book-dacia-test-drive .bdtd-label,
-  main .book-dacia-test-drive .bdtd-conf-key,
-  main .book-dacia-test-drive .bdtd-conf-msg { color: #b8b8b8; }
-  main .book-dacia-test-drive .bdtd-input { background: #1e1e1e; color: #f5f5f5; border-color: #444444; }
-  main .book-dacia-test-drive .bdtd-consent,
-  main .book-dacia-test-drive .bdtd-conf-val { color: #f5f5f5; }
-  main .book-dacia-test-drive .bdtd-btn-primary { background: #f5f5f5; color: #111111; }
-  main .book-dacia-test-drive .bdtd-btn-primary:hover,
-  main .book-dacia-test-drive .bdtd-btn-primary:focus-visible { background: #ffffff; }
-  main .book-dacia-test-drive .bdtd-btn-secondary { color: #f5f5f5; border-color: #f5f5f5; }
-  main .book-dacia-test-drive .bdtd-conf-row { border-bottom-color: #333333; }
+  main .book-dacia-test-drive .bdtd-card {
+    background: #161616;
+    border-color: #555;
+    color: #f2f2f2;
+  }
+  main .book-dacia-test-drive .bdtd-input {
+    background: #1e1e1e;
+    color: #f2f2f2;
+    border-color: #555;
+  }
+  main .book-dacia-test-drive .bdtd-label {
+    color: #cfcfcf;
+    opacity: 1;
+  }
+  main .book-dacia-test-drive .bdtd-consent {
+    color: #e8e8e8;
+  }
+  main .book-dacia-test-drive .bdtd-message {
+    color: #e8e8e8;
+  }
+  main .book-dacia-test-drive .bdtd-btn-secondary {
+    background: #1e1e1e;
+    color: #f2f2f2;
+    border-color: #777;
+  }
+  main .book-dacia-test-drive .bdtd-row {
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+  }
 }
-body.dark main .book-dacia-test-drive .bdtd-card { background: #161616; border-color: #333333; }
-body.dark main .book-dacia-test-drive .bdtd-dealer-name { color: #f5f5f5; }
-body.dark main .book-dacia-test-drive .bdtd-dealer-addr,
-body.dark main .book-dacia-test-drive .bdtd-label,
-body.dark main .book-dacia-test-drive .bdtd-conf-key,
-body.dark main .book-dacia-test-drive .bdtd-conf-msg { color: #b8b8b8; }
-body.dark main .book-dacia-test-drive .bdtd-input { background: #1e1e1e; color: #f5f5f5; border-color: #444444; }
-body.dark main .book-dacia-test-drive .bdtd-consent,
-body.dark main .book-dacia-test-drive .bdtd-conf-val { color: #f5f5f5; }
-body.dark main .book-dacia-test-drive .bdtd-btn-primary { background: #f5f5f5; color: #111111; }
-body.dark main .book-dacia-test-drive .bdtd-btn-primary:hover,
-body.dark main .book-dacia-test-drive .bdtd-btn-primary:focus-visible { background: #ffffff; }
-body.dark main .book-dacia-test-drive .bdtd-btn-secondary { color: #f5f5f5; border-color: #f5f5f5; }
-body.dark main .book-dacia-test-drive .bdtd-conf-row { border-bottom-color: #333333; }
+
+body.dark main .book-dacia-test-drive .bdtd-card {
+  background: #161616;
+  border-color: #555;
+  color: #f2f2f2;
+}
+body.dark main .book-dacia-test-drive .bdtd-input {
+  background: #1e1e1e;
+  color: #f2f2f2;
+  border-color: #555;
+}
+body.dark main .book-dacia-test-drive .bdtd-label {
+  color: #cfcfcf;
+  opacity: 1;
+}
+body.dark main .book-dacia-test-drive .bdtd-consent {
+  color: #e8e8e8;
+}
+body.dark main .book-dacia-test-drive .bdtd-message {
+  color: #e8e8e8;
+}
+body.dark main .book-dacia-test-drive .bdtd-btn-secondary {
+  background: #1e1e1e;
+  color: #f2f2f2;
+  border-color: #777;
+}
+body.dark main .book-dacia-test-drive .bdtd-row {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
