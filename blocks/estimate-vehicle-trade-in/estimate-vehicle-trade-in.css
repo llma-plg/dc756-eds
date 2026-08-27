@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap');
+
+/* Required for correct iframe sizing — AEM section margins inflate shadow body */
+main > div,
+main > .section,
+main > .section:first-of-type {
+  margin: 0;
+}
+main > .section > div {
+  max-width: none;
+  padding: 0;
+}
+body {
+  overflow: auto;
+}
+
+main .estimate-vehicle-trade-in {
+  font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 12px;
+  max-width: 560px;
+  color: #000;
+  line-height: 1.45;
+}
+
+main .estimate-vehicle-trade-in h1,
+main .estimate-vehicle-trade-in h2,
+main .estimate-vehicle-trade-in h3,
+main .estimate-vehicle-trade-in [class*="title"] {
+  font-family: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+main .estimate-vehicle-trade-in .evti-card {
+  border: 1px solid #000;
+  border-radius: 2px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: #fff;
+}
+
+/* Progress steps */
+main .estimate-vehicle-trade-in .evti-steps {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+main .estimate-vehicle-trade-in .evti-step {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+main .estimate-vehicle-trade-in .evti-step-marker {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  border: 1px solid #646b52;
+  color: #646b52;
+  background: #fff;
+}
+
+main .estimate-vehicle-trade-in .evti-step-label {
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+main .estimate-vehicle-trade-in .evti-step--done .evti-step-marker,
+main .estimate-vehicle-trade-in .evti-step--active .evti-step-marker {
+  background: #646b52;
+  color: #fff;
+}
+
+main .estimate-vehicle-trade-in .evti-step--active .evti-step-label {
+  color: #646b52;
+}
+
+main .estimate-vehicle-trade-in .evti-step--upcoming .evti-step-marker {
+  border-color: #8f8f8f;
+  color: #6b6b6b;
+}
+
+main .estimate-vehicle-trade-in .evti-step--upcoming .evti-step-label {
+  color: #6b6b6b;
+}
+
+main .estimate-vehicle-trade-in .evti-step-connector {
+  flex: 1 1 auto;
+  height: 1px;
+  min-width: 8px;
+  background: #b3b3b3;
+}
+
+/* Header + vehicle summary */
+main .estimate-vehicle-trade-in .evti-head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+main .estimate-vehicle-trade-in .evti-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+main .estimate-vehicle-trade-in .evti-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+main .estimate-vehicle-trade-in .evti-chip {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border: 1px solid #d0d0c4;
+  border-radius: 2px;
+  color: #444;
+  background: #f4f4ef;
+}
+
+/* Value range focal point */
+main .estimate-vehicle-trade-in .evti-value-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid #e2e2da;
+  border-bottom: 1px solid #e2e2da;
+  padding: 12px 0;
+}
+
+main .estimate-vehicle-trade-in .evti-badge {
+  align-self: flex-start;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 3px 8px;
+  border-radius: 2px;
+  background: #646b52;
+  color: #fff;
+}
+
+main .estimate-vehicle-trade-in .evti-range {
+  font-family: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.05;
+  color: #000;
+}
+
+main .estimate-vehicle-trade-in .evti-date {
+  font-size: 11px;
+  color: #6b6b6b;
+}
+
+/* Lists */
+main .estimate-vehicle-trade-in .evti-lists {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+main .estimate-vehicle-trade-in .evti-list {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+main .estimate-vehicle-trade-in .evti-list-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #646b52;
+}
+
+main .estimate-vehicle-trade-in .evti-list ul {
+  margin: 0;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+main .estimate-vehicle-trade-in .evti-list li {
+  font-size: 11px;
+  color: #444;
+  line-height: 1.4;
+}
+
+/* Actions */
+main .estimate-vehicle-trade-in .evti-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+main .estimate-vehicle-trade-in .evti-btn {
+  width: 100%;
+  padding: 10px 12px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 300ms ease-out, color 300ms ease-out;
+}
+
+main .estimate-vehicle-trade-in .evti-btn--primary {
+  background: #646b52;
+  color: #fff;
+  border: 1px solid #646b52;
+}
+
+main .estimate-vehicle-trade-in .evti-btn--primary:hover,
+main .estimate-vehicle-trade-in .evti-btn--primary:focus-visible {
+  background: #4f5441;
+  border-color: #4f5441;
+  outline: none;
+}
+
+main .estimate-vehicle-trade-in .evti-btn--secondary {
+  background: #fff;
+  color: #646b52;
+  border: 1px solid #646b52;
+}
+
+main .estimate-vehicle-trade-in .evti-btn--secondary:hover,
+main .estimate-vehicle-trade-in .evti-btn--secondary:focus-visible {
+  background: #646b52;
+  color: #fff;
+  outline: none;
+}
+
+@media (max-width: 480px) {
+  main .estimate-vehicle-trade-in .evti-step--done .evti-step-label,
+  main .estimate-vehicle-trade-in .evti-step--upcoming .evti-step-label {
+    display: none;
+  }
+  main .estimate-vehicle-trade-in .evti-step--active .evti-step-label {
+    overflow: visible;
+    text-overflow: clip;
+  }
+  main .estimate-vehicle-trade-in .evti-range {
+    font-size: 30px;
+  }
+}
+
+main .estimate-vehicle-trade-in .evti-empty {
+  font-size: 13px;
+  color: #6b6b6b;
+  padding: 18px;
+  text-align: center;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  main .estimate-vehicle-trade-in { color: #f0f0eb; }
+  main .estimate-vehicle-trade-in .evti-card {
+    background: #14140f;
+    border-color: #3a3a30;
+  }
+  main .estimate-vehicle-trade-in .evti-title { color: #f0f0eb; }
+  main .estimate-vehicle-trade-in .evti-range { color: #fff; }
+  main .estimate-vehicle-trade-in .evti-chip {
+    background: #23231b;
+    border-color: #3a3a30;
+    color: #cfcfc4;
+  }
+  main .estimate-vehicle-trade-in .evti-step-marker {
+    background: #14140f;
+    border-color: #9aa382;
+    color: #9aa382;
+  }
+  main .estimate-vehicle-trade-in .evti-step--done .evti-step-marker,
+  main .estimate-vehicle-trade-in .evti-step--active .evti-step-marker {
+    background: #9aa382;
+    color: #14140f;
+  }
+  main .estimate-vehicle-trade-in .evti-step--active .evti-step-label { color: #9aa382; }
+  main .estimate-vehicle-trade-in .evti-badge { background: #9aa382; color: #14140f; }
+  main .estimate-vehicle-trade-in .evti-list-title { color: #9aa382; }
+  main .estimate-vehicle-trade-in .evti-list li { color: #cfcfc4; }
+  main .estimate-vehicle-trade-in .evti-value-block { border-color: #3a3a30; }
+  main .estimate-vehicle-trade-in .evti-date { color: #a8a89e; }
+  main .estimate-vehicle-trade-in .evti-btn--primary { background: #9aa382; border-color: #9aa382; color: #14140f; }
+  main .estimate-vehicle-trade-in .evti-btn--primary:hover,
+  main .estimate-vehicle-trade-in .evti-btn--primary:focus-visible { background: #b0b899; border-color: #b0b899; }
+  main .estimate-vehicle-trade-in .evti-btn--secondary { background: transparent; color: #9aa382; border-color: #9aa382; }
+  main .estimate-vehicle-trade-in .evti-btn--secondary:hover,
+  main .estimate-vehicle-trade-in .evti-btn--secondary:focus-visible { background: #9aa382; color: #14140f; }
+}
+
+body.dark main .estimate-vehicle-trade-in { color: #f0f0eb; }
+body.dark main .estimate-vehicle-trade-in .evti-card {
+  background: #14140f;
+  border-color: #3a3a30;
+}
+body.dark main .estimate-vehicle-trade-in .evti-title { color: #f0f0eb; }
+body.dark main .estimate-vehicle-trade-in .evti-range { color: #fff; }
+body.dark main .estimate-vehicle-trade-in .evti-chip {
+  background: #23231b;
+  border-color: #3a3a30;
+  color: #cfcfc4;
+}
+body.dark main .estimate-vehicle-trade-in .evti-step-marker {
+  background: #14140f;
+  border-color: #9aa382;
+  color: #9aa382;
+}
+body.dark main .estimate-vehicle-trade-in .evti-step--done .evti-step-marker,
+body.dark main .estimate-vehicle-trade-in .evti-step--active .evti-step-marker {
+  background: #9aa382;
+  color: #14140f;
+}
+body.dark main .estimate-vehicle-trade-in .evti-step--active .evti-step-label { color: #9aa382; }
+body.dark main .estimate-vehicle-trade-in .evti-badge { background: #9aa382; color: #14140f; }
+body.dark main .estimate-vehicle-trade-in .evti-list-title { color: #9aa382; }
+body.dark main .estimate-vehicle-trade-in .evti-list li { color: #cfcfc4; }
+body.dark main .estimate-vehicle-trade-in .evti-value-block { border-color: #3a3a30; }
+body.dark main .estimate-vehicle-trade-in .evti-date { color: #a8a89e; }
+body.dark main .estimate-vehicle-trade-in .evti-btn--primary { background: #9aa382; border-color: #9aa382; color: #14140f; }
+body.dark main .estimate-vehicle-trade-in .evti-btn--primary:hover,
+body.dark main .estimate-vehicle-trade-in .evti-btn--primary:focus-visible { background: #b0b899; border-color: #b0b899; }
+body.dark main .estimate-vehicle-trade-in .evti-btn--secondary { background: transparent; color: #9aa382; border-color: #9aa382; }
+body.dark main .estimate-vehicle-trade-in .evti-btn--secondary:hover,
+body.dark main .estimate-vehicle-trade-in .evti-btn--secondary:focus-visible { background: #9aa382; color: #14140f; }
